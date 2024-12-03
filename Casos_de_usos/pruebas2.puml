@@ -1,0 +1,23 @@
+@startuml "videojuego"
+
+actor Player as Jugador
+
+usecase "Jugar un nivel" as UC_JugarNivel
+usecase "Empujar caja" as UC_EmpujarCaja
+usecase "Mover a la siguiente plataforma" as UC_Plataforma
+usecase "Completar nivel" as UC_CompletarNivel
+usecase "Reiniciar nivel" as UC_ReiniciarNivel
+usecase "Perder vida" as UC_PerderVida
+usecase "Finalizar juego" as UC_FinalizarJuego
+
+Jugador --> UC_JugarNivel : "Inicia juego"
+
+UC_JugarNivel --> UC_EmpujarCaja : <<extend>>
+UC_JugarNivel --> UC_Plataforma : <<extend>>
+UC_JugarNivel --> UC_CompletarNivel : <<extend>>
+
+UC_JugarNivel .> UC_ReiniciarNivel : <<extend>> (Si el jugador queda atascado)
+UC_ReiniciarNivel .> UC_PerderVida : <<extend>> (Si el jugador reinicia)
+UC_PerderVida .> UC_FinalizarJuego : <<extend>> (Si el jugador pierde todas sus vidas)
+
+@enduml

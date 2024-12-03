@@ -1,0 +1,18 @@
+@startuml
+
+left to right direction
+actor "Critico" as fc
+rectangle Restaurante {
+  usecase "Acta de pelicula" as UC1
+  usecase "Alta de cinta de video" as UC2
+  usecase "Baja de cinta de video" as UC3
+  usecase "Consulta de pelicula" as UC4
+  usecase "consulta de peliculas alquiladas durante un dia en concreto" as UC5
+}
+fc -> UC1 
+fc --> UC2
+fc ---> UC3
+fc ----> UC4
+fc -----> UC5
+
+@enduml
